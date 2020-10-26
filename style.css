@@ -1,0 +1,37 @@
+[mv-app] .mv-item-bar {
+	display: none !important;
+}
+[mv-app] :hover .mv-item-bar {
+	display: none !important;
+}
+.mv-item-bar button {
+	width: 24px;
+	height: 12px;
+	display: inline-block;
+    vertical-align: middle;
+    border: none;
+}
+.mv-item-bar button.mv-delete {
+	background: red;
+}
+.mv-item-bar button.mv-add {
+	background: green;
+}
+.mv-item-bar button.mv-drag-handle {
+	background: #ccc;
+}
+[mv-app] button.mv-add.mv-add-notes,
+[mv-app] button.mv-add.mv-add-contract,
+[mv-app] button.mv-add.mv-add-paradoteo,
+[mv-app] button.mv-add.mv-add-payment,
+[mv-app] button.mv-add.mv-add-attachment,
+[mv-app] button.mv-add.mv-add-bookmarkFolder,
+[mv-app] button.mv-add.mv-add-bookmarkItem,
+[mv-app] button.mv-add.mv-add-todo,
+[mv-app] button.mv-add.mv-add-license,
+[mv-app] button.mv-add.mv-add-service {
+	display: none;
+}
+.mv-status {
+	display: none;
+}
