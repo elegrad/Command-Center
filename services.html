@@ -13,545 +13,544 @@
     <script src="mavo-sort.js"></script>
 </head>
 <body class="bg-gray-900">
-<div mv-app="services" mv-storage="https://github.com/chiotis" mv-mode="edit" mv-bar="none" x-data="{ tab: 'services' }">
-	
-	<!-- Main Application Header -->
-	<header class="text-gray-500 bg-gray-800 body-font mv-logged-in">
-		<div class="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-			<a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8 text-white p-2 bg-teal-500 rounded-full" viewBox="0 0 24 24">
-					<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-				</svg>
-				<span class="ml-3 text-xl">Command Center</span>
-			</a>
+	<div mv-app="services" mv-storage="https://github.com/chiotis" mv-mode="edit" mv-bar="none" x-data="{ tab: 'services' }">
+		<!-- Main Application Header -->
+		<header class="text-gray-500 bg-gray-800 body-font mv-logged-in">
+			<div class="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+				<a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8 text-white p-2 bg-teal-500 rounded-full" viewBox="0 0 24 24">
+						<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+					</svg>
+					<span class="ml-3 text-xl">Command Center</span>
+				</a>
 
-			<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center mv-logged-in">
-				<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'services' }" @click.prevent="tab = 'services'">Υπηρεσίες</a>
-				<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'contracts' }" @click.prevent="tab = 'contracts'">Έργα</a>
-				<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'bookmarks' }" @click.prevent="tab = 'bookmarks'">Bookmarks</a>
-				<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'licenses' }" @click.prevent="tab = 'licenses'">Licenses</a>
-			</nav>
+				<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center mv-logged-in">
+					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'services' }" @click.prevent="tab = 'services'">Υπηρεσίες</a>
+					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'contracts' }" @click.prevent="tab = 'contracts'">Έργα</a>
+					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'bookmarks' }" @click.prevent="tab = 'bookmarks'">Bookmarks</a>
+					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'licenses' }" @click.prevent="tab = 'licenses'">Licenses</a>
+				</nav>
 
-			<button mv-action="add(service, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'services'">Νέα Υπηρεσία</button>
+				<button mv-action="add(service, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'services'">Νέα Υπηρεσία</button>
 
-			<button mv-action="add(group(name: 'Νέο Έργο'), contract, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'contracts'">Νέο Έργο</button>
+				<button mv-action="add(group(name: 'Νέο Έργο'), contract, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'contracts'">Νέο Έργο</button>
 
-			<button mv-action="add(group(title: 'Νέος Φάκελος'), bookmarkFolder, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'bookmarks'">Νέος Φάκελος</button>
+				<button mv-action="add(group(title: 'Νέος Φάκελος'), bookmarkFolder, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'bookmarks'">Νέος Φάκελος</button>
 
-			<button mv-action="add(license, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'licenses'">Νέο License</button>
+				<button mv-action="add(license, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'licenses'">Νέο License</button>
 
-			<button class="inline-flex items-center text-white bg-green-600 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded mt-4 mx-3 md:mt-0 mv-logged-in mv-save">Αποθήκευση
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 ml-1">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-				</svg>
-			</button>
+				<button class="inline-flex items-center text-white bg-green-600 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded mt-4 mx-3 md:mt-0 mv-logged-in mv-save">Αποθήκευση
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+					</svg>
+				</button>
 
-			<button class="inline-flex items-center text-white border-0 py-1 px-3 focus:outline-none mt-4 mx-3 md:mt-0 mv-logged-in mv-logout">Αποσύνδεση
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 ml-1">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-				</svg>
-			</button>
-		</div>
-	</header>
-
-	<!-- Visitors Welcome Screen -->
-	<section class="text-white body-font mv-logged-out">
-		<div class="container px-5 py-24 mx-auto">
-			<div class="lg:w-2/3 mx-auto text-center">
-				<h1 class="text-2xl font-medium title-font">Welcome to the Command Center. Please login to start working.</h1>
-				<button class="bg-teal-700 border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg mt-10 mv-login">Σύνδεση</button>
+				<button class="inline-flex items-center text-white border-0 py-1 px-3 focus:outline-none mt-4 mx-3 md:mt-0 mv-logged-in mv-logout">Αποσύνδεση
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+					</svg>
+				</button>
 			</div>
-		</div>
-	</section>
+		</header>
 
-	<!-- Services Section -->
-	<section class="mv-logged-in" x-show="tab === 'services'">
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 px-4 py-6">
-			<div mv-multiple="service" class="service" x-data="{ openModal: false }" >
-				<div @click="openModal = true" class="bg-[if((renewal_date - date($now) < 2592000000), 'red', if((renewal_date - date($now) < 5192000000), yellow, gray))]-800 px-3 py-2 border border-[if((renewal_date - date($now) < 2592000000), 'red', if((renewal_date - date($now) < 5192000000), yellow, gray))]-600 border-opacity-25 hover:border-opacity-100 rounded cursor-pointer relative text-[if((renewal_date - date($now) < 2592000000), 'red-200', if((renewal_date - date($now) < 5192000000), 'orange-200', 'gray-500'))] [if((renewal_date - date($now) < 2592000000), 'font-semibold', if((renewal_date - date($now) < 5192000000), 'font-semibold'))] transition duration-200 ease-in-out" >
-					<h2 class="text-sm">[name]</h2>
-					<p class="text-xs">Expires in [days(renewal_date - date($now))] days</p>
-					<div class="text-xs mr-3 mb-2 absolute bottom-0 right-0" mv-action="move(service, 0)">
-						<span mv-if="count(notes) > 0">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-3 w-3 inline-block">
-	  							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-	  						</svg>[count(notes)] / 
-	  					</span>[type]
-	  				</div>
-					<div class="mv-item-bar absolute top-0 right-0"></div>
+		<!-- Visitors Welcome Screen -->
+		<section class="text-white body-font mv-logged-out">
+			<div class="container px-5 py-24 mx-auto">
+				<div class="lg:w-2/3 mx-auto text-center">
+					<h1 class="text-2xl font-medium title-font">Welcome to the Command Center. Please login to start working.</h1>
+					<button class="bg-teal-700 border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg mt-10 mv-login">Σύνδεση</button>
 				</div>
+			</div>
+		</section>
 
-				<!-- Modal -->
-				<div class="bg-gray-800 bg-opacity-75 p-5 fixed inset-0 z-10" x-show="openModal" >
-	        		<div class="container bg-white mx-auto w-full h-full p-6 rounded relative shadow flex flex-col">
-
-	        			<!-- Modal Heading -->
-	        			<section class="flex-initial">
-		        			<button class="absolute right-0 top-0 mr-6 mt-4 bg-gray-200 text-gray-700 rounded-full px-3 py-1" @click="openModal = false" >
-		        				Close
-		        			</button>
-		        			<h2 class="text-2xl mb-4"> 
-		        				[name]
-		        				<span class="text-sm bg-gray-800 mt-8 rounded-full text-gray-100 py-1 px-3">Expires in [days(renewal_date - date($now))] days</span>
-		        			</h2>
-		        		</section>
-
-	        			<div class="flex-grow grid grid-cols-2 gap-6">
-		    				<!-- Main Details -->
-		    				<section>
-		        				<label class="text-gray-700">Name</label>
-								<input type="text" property="name" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-								<label class="text-gray-700">Type</label>
-								<div class="relative mb-4">
-									<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" property="type">
-										<option>Domain</option>
-										<option value="Email_Account">Email Account</option>
-										<option>Hosting</option>
-										<option>Retainer</option>
-									</select>
-									<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-										<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-									</div>
-								</div>
-								<label class="text-gray-700">Renewal Date</label>
-								<input type="date" property="renewal_date" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-								<label class="text-gray-700">Vendor</label>
-								<div class="relative mb-4">
-									<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" property="vendor">
-										<option>Nodehost</option>
-										<option>Zoho</option>
-										<option>Hetzner</option>
-										<option>Amazon Lightsail</option>
-										<option>Amazon EC2</option>
-										<option>DigitalOcean</option>
-										<option>Vultr</option>
-										<option>CloudCone</option>
-										<option>Github</option>
-										<option>ELEGRAD</option>
-										<option>Papaki</option>
-									</select>
-									<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-										<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-									</div>
-								</div>
-								<div class="flex">
-									<div class="flex-1 mr-2">
-										<label class="text-gray-700">Cost</label>
-										<input type="number" property="cost" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-									</div>
-									<div class="flex-1 ml-2">
-										<label class="text-gray-700">Vendor Cost</label>
-										<input type="number" property="vcost" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-									</div>
-								</div>
-								<div class="flex">
-									<div class="flex-1 mr-2">
-										<label class="text-gray-700">Hostname / IP</label>
-										<input type="text" property="host" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-									</div>
-									<div class="flex-1 ml-2">
-										<label class="text-gray-700">Service Password</label>
-										<input type="text" property="pswd" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-									</div>
-								</div>
-							</section>
-
-							<!-- Notes -->
-							<section>
-								<!-- New Note Form -->
-								<div property="newNote" class="bg-gray-200 p-4 pb-6 mb-4 rounded">
-									<label class="text-gray-700">New Note</label>
-									<input type="text" property="content" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4" >
-									<label class="text-gray-700">Date</label>
-									<input type="date" property="date" mv-value="date($now)" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
-									
-									<!-- New Note Add Button -->
-									<a mv-action="add(newNote, notes, 0) delete(newNote)" class="text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-xs" href="#">Add Note</a>
-								</div>
-
-								<!-- Notes List -->
-								<div class="overflow-auto h-64 overscroll-contain">
-									<div mv-multiple="notes" class="flex items-center bg-gray-200 border border-gray-400 rounded-full px-3 py-1 mb-2">
-										<div class="flex-grow text-sm text-gray-900"><span property="content"></span></div>
-										<div class="flex-grow-0 text-right text-xs text-gray-700 px-4" >[date]</div>
-										<div class="flex-grow-0 text-right text-xs text-gray-700" >
-											<button mv-action="delete(notes)" class="bg-red-200 mt-1 rounded-full">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-red-600" >
-												  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-												</svg>
-											</button>
-										</div>
-									</div>
-								</div>
-							</section>
-	        			</div>
-	        			
-	        			<!-- Modal Footer Buttons -->
-						<div class="flex-initial flex justify-end">
-							<button class="bg-gray-200 text-gray-600 hover:bg-gray-300 hover:text-gray-800 transition duration-200 ease-in-out px-4 py-3 mt-4 mr-4 text-sm rounded" mv-action="move(service, 0)" >Move Service to top</button>
-							<button class="bg-red-700 text-white px-4 mt-4 text-sm rounded" mv-action="delete(service)" >
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 inline-block mr-2">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-								</svg>Delete Service
-							</button>
+		<!-- Services Section -->
+		<section class="mv-logged-in" x-show="tab === 'services'">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 px-4 py-6">
+				<div mv-multiple="service" class="service" x-data="{ openModal: false }" >
+					<div @click="openModal = true" class="bg-[if((renewal_date - date($now) < 2592000000), 'red', if((renewal_date - date($now) < 5192000000), yellow, gray))]-800 px-3 py-2 border border-[if((renewal_date - date($now) < 2592000000), 'red', if((renewal_date - date($now) < 5192000000), yellow, gray))]-600 border-opacity-25 hover:border-opacity-100 rounded cursor-pointer relative text-[if((renewal_date - date($now) < 2592000000), 'red-200', if((renewal_date - date($now) < 5192000000), 'orange-200', 'gray-500'))] [if((renewal_date - date($now) < 2592000000), 'font-semibold', if((renewal_date - date($now) < 5192000000), 'font-semibold'))] transition duration-200 ease-in-out" >
+						<h2 class="text-sm">[name]</h2>
+						<p class="text-xs">Expires in [days(renewal_date - date($now))] days</p>
+						<div class="text-xs mr-3 mb-2 absolute bottom-0 right-0" mv-action="move(service, 0)">
+							<span mv-if="count(notes) > 0">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-3 w-3 inline-block">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+								</svg>[count(notes)] / 
+							</span>[type]
 						</div>
-	        		</div>
-				</div>
-				<!-- END of Modal -->
-			</div>
-		</div>
-	</section>
-
-	<!-- Erga Section -->
-	<section class="mv-logged-in" x-show="tab === 'contracts'">
-		<section class="text-gray-500 bg-gray-900 body-font">
-			<div class="px-4 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-				<div 
-					mv-multiple="contract" 
-					x-data="{ openModal: false }"
-					class="bg-gray-800 rounded flex p-4 h-full items-center">
-
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-teal-500 w-6 h-6 flex-shrink-0 mr-4 cursor-pointer" @click="openModal = true">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-					</svg>
-					<!--
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-					</svg>
-					-->
-					<span class="title-font font-medium text-white cursor-pointer" @click="openModal = true">[name]</span>
+						<div class="mv-item-bar absolute top-0 right-0"></div>
+					</div>
 
 					<!-- Modal -->
-					<div class="bg-black bg-opacity-75 p-10 fixed inset-0 z-10" x-show="openModal" >
-		        		<div class="bg-gray-900 mx-auto w-full h-full p-10 rounded relative shadow flex flex-col">
+					<div class="bg-gray-800 bg-opacity-75 p-5 fixed inset-0 z-10" x-show="openModal" >
+						<div class="container bg-white mx-auto w-full h-full p-6 rounded relative shadow flex flex-col">
 
-		        			<!-- Modal Heading -->
-		        			<section class="flex-initial">
-			        			<button class="absolute flex right-0 top-0 mr-6 mt-6 bg-gray-800 text-gray-500 hover:text-gray-400 rounded-full px-3 py-1" @click="openModal = false" >
-			        				Close
-			        				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class=" w-6 h-6 flex-shrink-0 ml-2">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-									</svg>
-			        			</button>
-			        			<h2 class="text-2xl mb-4 text-gray-200">[name]</h2>
-			        		</section>
+							<!-- Modal Heading -->
+							<section class="flex-initial">
+								<button class="absolute right-0 top-0 mr-6 mt-4 bg-gray-200 text-gray-700 rounded-full px-3 py-1" @click="openModal = false" >
+									Close
+								</button>
+								<h2 class="text-2xl mb-4"> 
+									[name]
+									<span class="text-sm bg-gray-800 mt-8 rounded-full text-gray-100 py-1 px-3">Expires in [days(renewal_date - date($now))] days</span>
+								</h2>
+							</section>
 
-			        		<div x-data="{ tab: 'information' }" class="flex flex-col">
-			        			<!-- Tabs -->
-								<div class="flex my-6">
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'information' }" @click.prevent="tab = 'information'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-										</svg>Πληροφορίες
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'paradotea' }" @click.prevent="tab = 'paradotea'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-										</svg>Παραδοτέα
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'pliromes' }" @click.prevent="tab = 'pliromes'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
-										</svg>Πληρωμές
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'ergasies' }" @click.prevent="tab = 'ergasies'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-										</svg>Εργασίες
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'attachment' }" @click.prevent="tab = 'attachment'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-										</svg>Συννημένα
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'exoda' }" @click.prevent="tab = 'exoda'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-										</svg>Έξοδα
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'simeioseis' }" @click.prevent="tab = 'simeioseis'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-										</svg>Σημειώσεις
-									</a>
-									<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'epiloges' }" @click.prevent="tab = 'epiloges'">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-										</svg>Επιλογές
-									</a>
-								</div>
-
-								<!-- Information Tab -->
-			        			<section x-show="tab === 'information'">
-			        				<div class="w-1/4 bg-gray-800 text-gray-200 rounded flex items-center p-6 mb-6 xl:mb-0" mv-if="creditHours">
-			        					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-16 h-16 mr-4 text-teal-500" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-										</svg>
-			        					<div>
-			        						<p class="font-semibold text-3xl">[creditHours - sum(todo.hours)]</p>
-			        						<p class="text-gray-400">Ώρες υπόλοιπο</p>
-			        					</div>
-			        				</div>
+							<div class="flex-grow grid grid-cols-2 gap-6">
+								<!-- Main Details -->
+								<section>
+									<label class="text-gray-700">Name</label>
+									<input type="text" property="name" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+									<label class="text-gray-700">Type</label>
+									<div class="relative mb-4">
+										<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" property="type">
+											<option>Domain</option>
+											<option value="Email_Account">Email Account</option>
+											<option>Hosting</option>
+											<option>Retainer</option>
+										</select>
+										<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+											<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+										</div>
+									</div>
+									<label class="text-gray-700">Renewal Date</label>
+									<input type="date" property="renewal_date" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+									<label class="text-gray-700">Vendor</label>
+									<div class="relative mb-4">
+										<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" property="vendor">
+											<option>Nodehost</option>
+											<option>Zoho</option>
+											<option>Hetzner</option>
+											<option>Amazon Lightsail</option>
+											<option>Amazon EC2</option>
+											<option>DigitalOcean</option>
+											<option>Vultr</option>
+											<option>CloudCone</option>
+											<option>Github</option>
+											<option>ELEGRAD</option>
+											<option>Papaki</option>
+										</select>
+										<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+											<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+										</div>
+									</div>
+									<div class="flex">
+										<div class="flex-1 mr-2">
+											<label class="text-gray-700">Cost</label>
+											<input type="number" property="cost" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+										</div>
+										<div class="flex-1 ml-2">
+											<label class="text-gray-700">Vendor Cost</label>
+											<input type="number" property="vcost" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+										</div>
+									</div>
+									<div class="flex">
+										<div class="flex-1 mr-2">
+											<label class="text-gray-700">Hostname / IP</label>
+											<input type="text" property="host" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+										</div>
+										<div class="flex-1 ml-2">
+											<label class="text-gray-700">Service Password</label>
+											<input type="text" property="pswd" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
+										</div>
+									</div>
 								</section>
 
-								<!-- Paradotea Tab -->
-								<section class="flex" x-show="tab === 'paradotea'">
-									<!-- Notes List -->
-									<div class="w-2/3">
-										<div mv-multiple="paradoteo" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
-											<div class="w-4/6 text-sm text-gray-300"><span property="title" mv-mode="read"></span></div>
-											<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
-											<div class="w-1/6 text-right text-xs text-gray-700" >
-												<button mv-action="delete(paradoteo)" class="bg-red-800 mt-1 rounded-full">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-													  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-													</svg>
-												</button>
-											</div>
-										</div>
-									</div>
-
+								<!-- Notes -->
+								<section>
 									<!-- New Note Form -->
-									<div property="newParadoteo" class='w-1/3 pl-6'>
-										<h3 class="text-lg mb-4 text-gray-200">Νέο Παραδοτέο</h3>
-
-										<label class="text-gray-400 block mb-2">Τίτλος</label>
-										<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">Ημερομηνία</label>
-										<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+									<div property="newNote" class="bg-gray-200 p-4 pb-6 mb-4 rounded">
+										<label class="text-gray-700">New Note</label>
+										<input type="text" property="content" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4" >
+										<label class="text-gray-700">Date</label>
+										<input type="date" property="date" mv-value="date($now)" class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline px-2 py-1 mb-4">
 										
 										<!-- New Note Add Button -->
-										<button mv-action="add(newParadoteo, paradoteo) delete(newParadoteo)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Παραδοτέου</button>
+										<a mv-action="add(newNote, notes, 0) delete(newNote)" class="text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-xs" href="#">Add Note</a>
 									</div>
-			        			</section>
 
-			        			<!-- Pliromes Tab -->
-								<section class="flex" x-show="tab === 'pliromes'">
 									<!-- Notes List -->
-									<div class="w-2/3">
-										<div mv-multiple="payment" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
-											<div class="w-3/6 text-sm text-gray-300"><span property="title" mv-mode="read"></span> - [percent]%</div>
-											<div class="w-1/6 text-sm text-gray-400">&euro;[cost * (percent/100)]</div>
-											<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
-											<div class="w-1/6 text-right text-xs text-gray-700" >
-												<button mv-action="delete(payment)" class="bg-red-800 mt-1 rounded-full">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-													  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+									<div class="overflow-auto h-64 overscroll-contain">
+										<div mv-multiple="notes" class="flex items-center bg-gray-200 border border-gray-400 rounded-full px-3 py-1 mb-2">
+											<div class="flex-grow text-sm text-gray-900"><span property="content"></span></div>
+											<div class="flex-grow-0 text-right text-xs text-gray-700 px-4" >[date]</div>
+											<div class="flex-grow-0 text-right text-xs text-gray-700" >
+												<button mv-action="delete(notes)" class="bg-red-200 mt-1 rounded-full">
+													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-red-600" >
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 													</svg>
 												</button>
 											</div>
 										</div>
 									</div>
-
-									<!-- New Note Form -->
-									<div property="newPayment" class='w-1/3 pl-6'>
-										<h3 class="text-lg mb-4 text-gray-200">Νέα Πληρωμή</h3>
-
-										<label class="text-gray-400 block mb-2">Τίτλος</label>
-										<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">Ποσοστό</label>
-										<input type="number" min="0" max="100" step="1" property="percent" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">Ημερομηνία</label>
-										<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-										
-										<!-- New Note Add Button -->
-										<button mv-action="add(newPayment, payment) delete(newPayment)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Πληρωμής</button>
-									</div>
-			        			</section>
-
-			        			<!-- Ergasies Tab -->
-								<section class="flex" x-show="tab === 'ergasies'">
-									<!-- Notes List -->
-									<div class="w-2/3">
-										<div mv-multiple="todo" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
-											<div class="w-4/6 text-sm text-gray-300">
-												<span property="title" mv-mode="read"></span>
-												<span mv-if="hours">([hours] ώρες)</span>
-											</div>
-											<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
-											<div class="w-1/6 text-right text-xs text-gray-700" >
-												<button mv-action="delete(todo)" class="bg-red-800 mt-1 rounded-full">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-													  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-													</svg>
-												</button>
-											</div>
-										</div>
-									</div>
-
-									<!-- New Todo Form -->
-									<div property="newTodo" class='w-1/3 pl-6'>
-										<h3 class="text-lg mb-4 text-gray-200">Νέα Εργασία</h3>
-
-										<label class="text-gray-400 block mb-2">Τίτλος</label>
-										<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">Ημερομηνία</label>
-										<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-
-										<label class="text-gray-400 block mb-2">Ώρες</label>
-										<input type="number" property="hours" min="1" step="1" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-										
-										<!-- New Note Todo Button -->
-										<button mv-action="add(newTodo, todo, 0) delete(newTodo)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Εργασίας</button>
-									</div>
-			        			</section>
-
-			        			<!-- Attachment Tab -->
-								<section class="flex" x-show="tab === 'attachment'">
-									<!-- Notes List -->
-									<div class="w-2/3">
-										<div mv-multiple="attachment" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
-											<div class="w-4/6 text-sm text-gray-300">
-												<span property="title" mv-mode="read"></span>
-											</div>
-											<div class="w-2/6 text-right text-xs text-gray-700" >
-												<a href="[url]" class="inline-block mt-1 mr-3">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
-														<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-														<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-													</svg>
-												</a>
-												<button mv-action="delete(attachment)" class="bg-red-800 mt-1 rounded-full">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-													  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-													</svg>
-												</button>
-											</div>
-										</div>
-									</div>
-
-									<!-- New Form -->
-									<div property="newAttachment" class='w-1/3 pl-6'>
-										<h3 class="text-lg mb-4 text-gray-200">Νέο Συννημένο</h3>
-
-										<label class="text-gray-400 block mb-2">Τίτλος</label>
-										<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">URL</label>
-										<input type="text" property="url" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<!-- New Add Button -->
-										<button mv-action="add(newAttachment, attachment) delete(newAttachment)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη</button>
-									</div>
-			        			</section>
-
-								<!-- Simeioseis Tab -->
-			        			<section class="flex" x-show="tab === 'simeioseis'">
-									<!-- Notes List -->
-									<div class="w-2/3">
-										<div mv-multiple="notes" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
-											<div class="w-4/6 text-sm text-gray-300"><span property="content"></span></div>
-											<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
-											<div class="w-1/6 text-right text-xs text-gray-700" >
-												<button mv-action="delete(notes)" class="bg-red-800 mt-1 rounded-full">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-													  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-													</svg>
-												</button>
-											</div>
-										</div>
-									</div>
-
-									<!-- New Note Form -->
-									<div property="newNote" class='w-1/3 pl-6'>
-										<h3 class="text-lg mb-4 text-gray-200">Νέα Σημείωση</h3>
-
-										<label class="text-gray-400 block mb-2">Τίτλος</label>
-										<input type="text" property="content" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
-
-										<label class="text-gray-400 block mb-2">Ημερομηνία</label>
-										<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-										
-										<!-- New Note Add Button -->
-										<button mv-action="add(newNote, notes, 0) delete(newNote)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Σημείωσης</button>
-									</div>
-			        			</section>
-
-			        			<!-- Epiloges Tab -->
-								<section class="" x-show="tab === 'epiloges'">
-									<label class="text-gray-400 block mb-2">Τίτλος</label>
-									<input type="text" property="name" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-									
-									<label class="text-gray-400 block mb-2">Συνολικό Ποσό</label>
-									<input type="number" property="cost" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-
-									<label class="text-gray-400 block mb-2">Πληρωμένες Ώρες</label>
-									<input type="number" step="1" property="creditHours" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
-									<div class="flex-initial flex justify-end">
-										<button class="text-gray-500 hover:bg-gray-800 hover:text-gray-400 transition duration-200 ease-in-out px-4 py-3 mt-4 mr-4 text-sm rounded" mv-action="move(contract, 0)" >Μετακίνηση στην κορυφή</button>
-										<button class="bg-red-700 text-white px-4 mt-4 text-sm rounded" mv-action="delete(contract)" >
-											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 inline-block mr-2">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-											</svg>Διαγραφή Σύμβασης
-										</button>
-									</div>
-			        			</section>
-			        		</div>
-		        		</div>
+								</section>
+							</div>
+							
+							<!-- Modal Footer Buttons -->
+							<div class="flex-initial flex justify-end">
+								<button class="bg-gray-200 text-gray-600 hover:bg-gray-300 hover:text-gray-800 transition duration-200 ease-in-out px-4 py-3 mt-4 mr-4 text-sm rounded" mv-action="move(service, 0)" >Move Service to top</button>
+								<button class="bg-red-700 text-white px-4 mt-4 text-sm rounded" mv-action="delete(service)" >
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 inline-block mr-2">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+									</svg>Delete Service
+								</button>
+							</div>
+						</div>
 					</div>
 					<!-- END of Modal -->
 				</div>
 			</div>
 		</section>
-	</section>
 
-	<!-- Bookmarks Section -->
-	<section class="mv-logged-in px-4 py-6 text-white" x-show="tab === 'bookmarks'">
-		<!-- folders -->
-		<div mv-multiple="bookmarkFolder" class="bg-gray-800 p-4 mb-2 rounded" x-data="{ openFolder: false }">
-			<button mv-action="delete(bookmarkFolder)" class="float-right text-white bg-red-600 border-0 py-1 px-3 focus:outline-none hover:bg-red-700 rounded mt-2 text-sm" x-show="openFolder">Διαγραφή Φακέλου</button>
-			<button mv-action="add(bookmarkItem, 0)" class="float-right text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-2 text-sm" x-show="openFolder">Νέο Bookmark</button>
+		<!-- Erga Section -->
+		<section class="mv-logged-in" x-show="tab === 'contracts'">
+			<section class="text-gray-500 bg-gray-900 body-font">
+				<div class="px-4 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+					<div 
+						mv-multiple="contract" 
+						x-data="{ openModal: false }"
+						class="bg-gray-800 rounded flex p-4 h-full items-center">
 
-			<h3 @click="openFolder = !openFolder">
-				<span property="title" mv-mode="read" class="block text-lg"></span>
-			</h3>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-teal-500 w-6 h-6 flex-shrink-0 mr-4 cursor-pointer" @click="openModal = true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<!--
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+						</svg>
+						-->
+						<span class="title-font font-medium text-white cursor-pointer" @click="openModal = true">[name]</span>
 
-			<div mv-multiple="bookmarkItem" class="bg-gray-700 p-4 mt-3 rounded flex justify-between" x-show="openFolder">
-				<span class="flex-grow" property="title"></span>
-				<span class="flex-grow" property="description"></span>
-				<span class="flex-grow" property="url"></span>
-				<button mv-action="delete(bookmarkItem)" class="flex-grow-0 bg-red-800 mt-1 rounded-full">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
-		</div>
-	</section>
+						<!-- Modal -->
+						<div class="bg-black bg-opacity-75 p-10 fixed inset-0 z-10" x-show="openModal" >
+							<div class="bg-gray-900 mx-auto w-full h-full p-10 rounded relative shadow flex flex-col">
 
-	<!-- Licenses Section -->
-	<section class="container mx-auto mv-logged-in px-4 py-6" x-show="tab === 'licenses'">
-		<div mv-multiple="license" class="flex items-center bg-gray-800 hover:bg-gray-700 rounded px-3 py-1 mb-2 transition duration-200 ease-in-out">
-			<div class="flex-grow text-sm text-gray-300"><span property="name"></span></div>
-			<div class="flex-grow-0 text-right text-xs text-gray-400 px-4" ><span property="code"></span></div>
-			<div class="flex-grow-0 text-right text-xs text-gray-400" mv-if="url">
-				<a href="[url]" class="inline-block mt-1 mr-3" target="_blank">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
-						<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-						<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-					</svg>
-				</a>
+								<!-- Modal Heading -->
+								<section class="flex-initial">
+									<button class="absolute flex right-0 top-0 mr-6 mt-6 bg-gray-800 text-gray-500 hover:text-gray-400 rounded-full px-3 py-1" @click="openModal = false" >
+										Close
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class=" w-6 h-6 flex-shrink-0 ml-2">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+										</svg>
+									</button>
+									<h2 class="text-2xl mb-4 text-gray-200">[name]</h2>
+								</section>
+
+								<div x-data="{ tab: 'information' }" class="flex flex-col">
+									<!-- Tabs -->
+									<div class="flex my-6">
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'information' }" @click.prevent="tab = 'information'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+											</svg>Πληροφορίες
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'paradotea' }" @click.prevent="tab = 'paradotea'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+											</svg>Παραδοτέα
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'pliromes' }" @click.prevent="tab = 'pliromes'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+											</svg>Πληρωμές
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'ergasies' }" @click.prevent="tab = 'ergasies'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+											</svg>Εργασίες
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'attachment' }" @click.prevent="tab = 'attachment'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+											</svg>Συννημένα
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'exoda' }" @click.prevent="tab = 'exoda'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+											</svg>Έξοδα
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'simeioseis' }" @click.prevent="tab = 'simeioseis'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 mr-3" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+											</svg>Σημειώσεις
+										</a>
+										<a class="flex-1 sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t border-gray-800 cursor-pointer" :class="{ 'text-white bg-gray-800 border-teal-500': tab === 'epiloges' }" @click.prevent="tab = 'epiloges'">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-3">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+											</svg>Επιλογές
+										</a>
+									</div>
+
+									<!-- Information Tab -->
+									<section x-show="tab === 'information'">
+										<div class="w-1/4 bg-gray-800 text-gray-200 rounded flex items-center p-6 mb-6 xl:mb-0" mv-if="creditHours">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-16 h-16 mr-4 text-teal-500" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+											</svg>
+											<div>
+												<p class="font-semibold text-3xl">[creditHours - sum(todo.hours)]</p>
+												<p class="text-gray-400">Ώρες υπόλοιπο</p>
+											</div>
+										</div>
+									</section>
+
+									<!-- Paradotea Tab -->
+									<section class="flex" x-show="tab === 'paradotea'">
+										<!-- Notes List -->
+										<div class="w-2/3">
+											<div mv-multiple="paradoteo" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
+												<div class="w-4/6 text-sm text-gray-300"><span property="title" mv-mode="read"></span></div>
+												<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
+												<div class="w-1/6 text-right text-xs text-gray-700" >
+													<button mv-action="delete(paradoteo)" class="bg-red-800 mt-1 rounded-full">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<!-- New Note Form -->
+										<div property="newParadoteo" class='w-1/3 pl-6'>
+											<h3 class="text-lg mb-4 text-gray-200">Νέο Παραδοτέο</h3>
+
+											<label class="text-gray-400 block mb-2">Τίτλος</label>
+											<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">Ημερομηνία</label>
+											<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+											
+											<!-- New Note Add Button -->
+											<button mv-action="add(newParadoteo, paradoteo) delete(newParadoteo)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Παραδοτέου</button>
+										</div>
+									</section>
+
+									<!-- Pliromes Tab -->
+									<section class="flex" x-show="tab === 'pliromes'">
+										<!-- Notes List -->
+										<div class="w-2/3">
+											<div mv-multiple="payment" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
+												<div class="w-3/6 text-sm text-gray-300"><span property="title" mv-mode="read"></span> - [percent]%</div>
+												<div class="w-1/6 text-sm text-gray-400">&euro;[cost * (percent/100)]</div>
+												<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
+												<div class="w-1/6 text-right text-xs text-gray-700" >
+													<button mv-action="delete(payment)" class="bg-red-800 mt-1 rounded-full">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<!-- New Note Form -->
+										<div property="newPayment" class='w-1/3 pl-6'>
+											<h3 class="text-lg mb-4 text-gray-200">Νέα Πληρωμή</h3>
+
+											<label class="text-gray-400 block mb-2">Τίτλος</label>
+											<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">Ποσοστό</label>
+											<input type="number" min="0" max="100" step="1" property="percent" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">Ημερομηνία</label>
+											<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+											
+											<!-- New Note Add Button -->
+											<button mv-action="add(newPayment, payment) delete(newPayment)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Πληρωμής</button>
+										</div>
+									</section>
+
+									<!-- Ergasies Tab -->
+									<section class="flex" x-show="tab === 'ergasies'">
+										<!-- Notes List -->
+										<div class="w-2/3">
+											<div mv-multiple="todo" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
+												<div class="w-4/6 text-sm text-gray-300">
+													<span property="title" mv-mode="read"></span>
+													<span mv-if="hours">([hours] ώρες)</span>
+												</div>
+												<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
+												<div class="w-1/6 text-right text-xs text-gray-700" >
+													<button mv-action="delete(todo)" class="bg-red-800 mt-1 rounded-full">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<!-- New Todo Form -->
+										<div property="newTodo" class='w-1/3 pl-6'>
+											<h3 class="text-lg mb-4 text-gray-200">Νέα Εργασία</h3>
+
+											<label class="text-gray-400 block mb-2">Τίτλος</label>
+											<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">Ημερομηνία</label>
+											<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+
+											<label class="text-gray-400 block mb-2">Ώρες</label>
+											<input type="number" property="hours" min="1" step="1" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+											
+											<!-- New Note Todo Button -->
+											<button mv-action="add(newTodo, todo, 0) delete(newTodo)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Εργασίας</button>
+										</div>
+									</section>
+
+									<!-- Attachment Tab -->
+									<section class="flex" x-show="tab === 'attachment'">
+										<!-- Notes List -->
+										<div class="w-2/3">
+											<div mv-multiple="attachment" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
+												<div class="w-4/6 text-sm text-gray-300">
+													<span property="title" mv-mode="read"></span>
+												</div>
+												<div class="w-2/6 text-right text-xs text-gray-700" >
+													<a href="[url]" class="inline-block mt-1 mr-3">
+														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
+															<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+															<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+														</svg>
+													</a>
+													<button mv-action="delete(attachment)" class="bg-red-800 mt-1 rounded-full">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<!-- New Form -->
+										<div property="newAttachment" class='w-1/3 pl-6'>
+											<h3 class="text-lg mb-4 text-gray-200">Νέο Συννημένο</h3>
+
+											<label class="text-gray-400 block mb-2">Τίτλος</label>
+											<input type="text" property="title" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">URL</label>
+											<input type="text" property="url" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<!-- New Add Button -->
+											<button mv-action="add(newAttachment, attachment) delete(newAttachment)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη</button>
+										</div>
+									</section>
+
+									<!-- Simeioseis Tab -->
+									<section class="flex" x-show="tab === 'simeioseis'">
+										<!-- Notes List -->
+										<div class="w-2/3">
+											<div mv-multiple="notes" class="flex items-center bg-gray-800 border border-gray-700 rounded px-3 py-2 mb-2">
+												<div class="w-4/6 text-sm text-gray-300"><span property="content"></span></div>
+												<div class="w-1/6 text-right text-xs text-gray-500 px-4" >[date]</div>
+												<div class="w-1/6 text-right text-xs text-gray-700" >
+													<button mv-action="delete(notes)" class="bg-red-800 mt-1 rounded-full">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<!-- New Note Form -->
+										<div property="newNote" class='w-1/3 pl-6'>
+											<h3 class="text-lg mb-4 text-gray-200">Νέα Σημείωση</h3>
+
+											<label class="text-gray-400 block mb-2">Τίτλος</label>
+											<input type="text" property="content" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300" >
+
+											<label class="text-gray-400 block mb-2">Ημερομηνία</label>
+											<input type="date" property="date" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+											
+											<!-- New Note Add Button -->
+											<button mv-action="add(newNote, notes, 0) delete(newNote)" class="text-white bg-teal-700 text-sm border-0 py-2 px-4 focus:outline-none hover:bg-teal-600 rounded mt-4">Προσθήκη Σημείωσης</button>
+										</div>
+									</section>
+
+									<!-- Epiloges Tab -->
+									<section class="" x-show="tab === 'epiloges'">
+										<label class="text-gray-400 block mb-2">Τίτλος</label>
+										<input type="text" property="name" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+										
+										<label class="text-gray-400 block mb-2">Συνολικό Ποσό</label>
+										<input type="number" property="cost" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+
+										<label class="text-gray-400 block mb-2">Πληρωμένες Ώρες</label>
+										<input type="number" step="1" property="creditHours" class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300">
+										<div class="flex-initial flex justify-end">
+											<button class="text-gray-500 hover:bg-gray-800 hover:text-gray-400 transition duration-200 ease-in-out px-4 py-3 mt-4 mr-4 text-sm rounded" mv-action="move(contract, 0)" >Μετακίνηση στην κορυφή</button>
+											<button class="bg-red-700 text-white px-4 mt-4 text-sm rounded" mv-action="delete(contract)" >
+												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 inline-block mr-2">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+												</svg>Διαγραφή Σύμβασης
+											</button>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+						<!-- END of Modal -->
+					</div>
+				</div>
+			</section>
+		</section>
+
+		<!-- Bookmarks Section -->
+		<section class="mv-logged-in px-4 py-6 text-white" x-show="tab === 'bookmarks'">
+			<!-- folders -->
+			<div mv-multiple="bookmarkFolder" class="bg-gray-800 p-4 mb-2 rounded" x-data="{ openFolder: false }">
+				<button mv-action="delete(bookmarkFolder)" class="float-right text-white bg-red-600 border-0 py-1 px-3 focus:outline-none hover:bg-red-700 rounded mt-2 text-sm" x-show="openFolder">Διαγραφή Φακέλου</button>
+				<button mv-action="add(bookmarkItem, 0)" class="float-right text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-2 text-sm" x-show="openFolder">Νέο Bookmark</button>
+
+				<h3 @click="openFolder = !openFolder">
+					<span property="title" mv-mode="edit" class="block text-lg"></span>
+				</h3>
+
+				<div mv-multiple="bookmarkItem" class="bg-gray-700 p-4 mt-3 rounded flex justify-between" x-show="openFolder">
+					<span class="flex-grow" property="title"></span>
+					<span class="flex-grow" property="description"></span>
+					<span class="flex-grow" property="url"></span>
+					<button mv-action="delete(bookmarkItem)" class="flex-grow-0 bg-red-800 mt-1 rounded-full">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
 			</div>
-			<div class="flex-grow-0 text-right text-xs text-gray-700" >
-				<button mv-action="move(license, 0)" class="inline-block mt-1">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
-						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
-					</svg>
-				</button>
+		</section>
+
+		<!-- Licenses Section -->
+		<section class="container mx-auto mv-logged-in px-4 py-6" x-show="tab === 'licenses'">
+			<div mv-multiple="license" class="flex items-center bg-gray-800 hover:bg-gray-700 rounded px-3 py-1 mb-2 transition duration-200 ease-in-out">
+				<div class="flex-grow text-sm text-gray-300"><span property="name"></span></div>
+				<div class="flex-grow-0 text-right text-xs text-gray-400 px-4" ><span property="code"></span></div>
+				<div class="flex-grow-0 text-right text-xs text-gray-400" mv-if="url">
+					<a href="[url]" class="inline-block mt-1 mr-3" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
+							<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+							<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+						</svg>
+					</a>
+				</div>
+				<div class="flex-grow-0 text-right text-xs text-gray-700" >
+					<button mv-action="move(license, 0)" class="inline-block mt-1">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-gray-400">
+							<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+						</svg>
+					</button>
+				</div>
+				<div class="flex-grow-0 text-right text-xs text-gray-700" >
+					<button mv-action="delete(license)" class="bg-red-800 mt-1 rounded-full">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
 			</div>
-			<div class="flex-grow-0 text-right text-xs text-gray-700" >
-				<button mv-action="delete(license)" class="bg-red-800 mt-1 rounded-full">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white" >
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
-		</div>
-	</section>
-</div>
+		</section>
+	</div>
 </body>
 </html>
