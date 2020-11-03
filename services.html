@@ -6,6 +6,7 @@
 
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%23000000%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2286%22>☠️</text></svg>" />
 
 	<link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
 	<link rel="stylesheet" href="style.css"/>
@@ -18,9 +19,7 @@
 		<header class="text-gray-500 bg-gray-800 body-font mv-logged-in">
 			<div class="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
 				<a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8 text-white p-2 bg-teal-500 rounded-full" viewBox="0 0 24 24">
-						<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-					</svg>
+					<img src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>☠️</text></svg>" class="w-8 h-8">
 					<span class="ml-3 text-xl">Command Center</span>
 				</a>
 
@@ -29,6 +28,7 @@
 					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'contracts' }" @click.prevent="tab = 'contracts'">Έργα</a>
 					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'bookmarks' }" @click.prevent="tab = 'bookmarks'">Bookmarks</a>
 					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'licenses' }" @click.prevent="tab = 'licenses'">Licenses</a>
+					<a class="py-1 px-3 rounded hover:text-white cursor-pointer" :class="{ 'text-white bg-gray-900': tab === 'hosting' }" @click.prevent="tab = 'hosting'">Hosting</a>
 				</nav>
 
 				<button mv-action="add(service, 0)" class="inline-flex items-center text-white bg-teal-600 border-0 py-1 px-3 focus:outline-none hover:bg-teal-700 rounded mt-4 mx-3 md:mt-0" x-show="tab === 'services'">Νέα Υπηρεσία</button>
@@ -551,6 +551,73 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- Hosting Section -->
+		<section 
+			class="mv-logged-in px-4 py-6" 
+			x-show="tab === 'hosting'"
+			>
+			
+			<div x-data="hostingSearch()">
+				<select
+					type="text"
+					name="apiKey"
+					x-model="apiKey"
+					class="w-full bg-gray-800 border border-gray-700 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500 px-2 py-1 mb-4 text-gray-300"
+					/>
+					<option value="">-- Select User --</option>
+					<option value="elegant-sudoku-hang-glider-xz62y3ifa970wslvsra2cksldq72ob">christoschiotis</option>
+					<option value="reseller-qJvh4aqHRQ-cute-starling-lonely-linseed-oil-shootout-EeCE3t3C3FZk0bR">elegradreseller</option>
+				</select>
+				<button
+					type="submit"
+					@click="fetchContainers()"
+					:disabled="isLoading"
+					class="text-white bg-teal-700 text-sm border-0 py-2 px-4 mb-6 focus:outline-none hover:bg-teal-600 rounded"
+					>
+					Load
+				</button>
+
+				<template 
+					x-if="container" 
+					x-for="data in container.data"
+					:key="data.domain"
+					>
+						<div class="flex items-center bg-gray-800 hover:bg-gray-700 rounded px-3 py-1 mb-2 transition duration-200 ease-in-out">
+							<span class="flex-grow text-sm text-gray-300" x-text="data.domain"></span>
+							
+							<span class="flex-grow-0 text-right text-xs text-gray-400 px-4" x-text="data.size"></span>
+							<span class="flex-grow-0 text-right text-xs text-gray-400 px-4 uppercase" x-text="data.node"></span>
+						</div>
+					<!-- <template
+						x-for="abilityObj in pokemon.abilities"
+						:key="abilityObj.ability.url"
+						>
+						<span x-text="abilityObj.ability.name"></span>
+					</template> -->
+				</template>
+
+			</div>
+		</section>
 	</div>
+
+	<script>
+		function hostingSearch() {
+			return {
+				apiKey: '',
+				isLoading: false,
+				container: null,
+				fetchContainers() {
+					this.isLoading = true;
+					fetch(`https://api.nodehost.cloud/get_services_containers_list?api_key=${this.apiKey}`)
+						.then(res => res.json())
+						.then(data => {
+							this.isLoading = false;
+							this.container = data;
+						});
+				}
+			}
+		}
+	</script>
 </body>
 </html>
